@@ -27,7 +27,8 @@
   border-radius: 50%; /* makes it circular */
   padding: 3px;
 
-  background: linear-gradient(135deg, #6366f1, #a855f7, #06b6d4);
+  background: transparent !important;
+  mix-blend-mode: lighten; /* helps blend */
   
   transition: all 0.3s ease;
 }
@@ -60,11 +61,6 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: "Inter";
-  transition: 0.3s;
-}
-
-.custom-navbar {
-  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
