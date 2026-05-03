@@ -1,9 +1,12 @@
-// ROLE AUTO CHANGE
+// ===== ROLE AUTO CHANGE =====
 const roles = [
     "Lead Generative AI Engineer",
     "Full Stack Developer",
-    "AI Agent Architect",
-    "RAG Systems Expert"
+    "AI Agent",
+    "Agentic AI",
+    "RAG Systems",
+    "AWS Cloud",
+    "DevOps"
 ];
 
 let index = 0;
@@ -15,10 +18,9 @@ setInterval(() => {
 }, 2500);
 
 
-// DARK/LIGHT MODE (FULLY WORKING)
+// ===== DARK MODE =====
 const toggle = document.getElementById("themeToggle");
 
-// Load saved theme
 if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light-mode");
     toggle.textContent = "☀️";
@@ -37,15 +39,36 @@ toggle.addEventListener("click", () => {
 });
 
 
-// SKILL BAR ANIMATION
-window.addEventListener("load", () => {
-    document.querySelectorAll(".progress-bar").forEach(bar => {
-        bar.style.width = bar.getAttribute("data-width");
+// ===== REVEAL ON SCROLL =====
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
     });
-});
+}, { threshold: 0.2 });
+
+reveals.forEach(r => observer.observe(r));
 
 
-// SMOOTH SCROLL
+// ===== SKILL BAR ANIMATION =====
+const skillBars = document.querySelectorAll(".progress-bar");
+
+const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            bar.style.width = bar.getAttribute("data-width");
+        }
+    });
+}, { threshold: 0.5 });
+
+skillBars.forEach(bar => skillObserver.observe(bar));
+
+
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
         e.preventDefault();
